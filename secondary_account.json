@@ -1,0 +1,75 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Description": "This is the template that must be launched in all secondary accounts that you intend to access with the VGW redundancy poller from the parent account. The stack will deploy the necessary IAM role to grant permissions to the tool on behalf of this account.",
+	"Metadata": {
+		"AWS::CloudFormation::Interface": {
+			"ParameterLabels": {
+				"ParentAccountId": {
+					"default": "Parent Acct ID"
+				}
+			}
+
+		}
+	},
+
+	"Parameters": {
+		"ParentAccountId": {
+			"Description": "Specify the AWS account that you're running the VGW redundancy poller from. This stack will grant API access to that account",
+            "Type": "String",
+            "AllowedPattern": "[0-9]{12}",
+            "ConstraintDescription" : "You must provide a valid AWS account which the TGW migrator tool resides in. The format should be '000000000000' with no whitespaces"
+        }
+	},
+
+
+	"Resources": {
+
+    "IamPolicyForParentAccount": {
+        "Type": "AWS::IAM::Policy",
+        "Properties": {
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                "ec2:DescribeRegions",
+                "sts:GetCallerIdentity",
+                "directconnect:DescribeVirtualGateways",
+                "directconnect:DescribeVirtualInterfaces",
+                "directconnect:DescribeDirectConnectGatewayAssociations",
+                "directconnect:DescribeDirectConnectGatewayAttachments"
+                ],
+                "Resource": "*"
+              }
+            ]
+          },
+          "PolicyName": "VgwRedundancyPoller",
+          "Roles": [
+            {
+              "Ref": "IamRoleForParentAccount"
+            }
+          ]
+        }
+      },
+    "IamRoleForParentAccount": {
+        "Type": "AWS::IAM::Role",
+        "Properties": {
+          "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Principal": {
+                  "AWS": {"Ref":"ParentAccountId"}
+                },
+                "Action": "sts:AssumeRole"
+              }
+            ]
+          },
+          "Path": "/",
+		  "RoleName": "VgwRedundancyPollerRole"
+      }
+    }
+  }
+}
