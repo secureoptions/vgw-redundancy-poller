@@ -1,0 +1,56 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "This is the template that must be launched in the primary account that you intend to run the VGW Redundancy Poller from.",
+
+    "Resources": {
+
+        "IamPolicyForParentAccount": {
+            "Type": "AWS::IAM::Policy",
+            "Properties": {
+            "PolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                    "ec2:DescribeRegions",
+                    "sts:GetCallerIdentity",
+                    "sts:AssumeRole",
+                    "directconnect:DescribeVirtualGateways",
+                    "directconnect:DescribeVirtualInterfaces",
+                    "directconnect:DescribeDirectConnectGatewayAssociations",
+                    "directconnect:DescribeDirectConnectGatewayAttachments"
+                    ],
+                    "Resource": "*"
+                }
+                ]
+            },
+            "PolicyName": "ParentVgwRedundancyPoller",
+            "Roles": [
+                {
+                "Ref": "IamRoleForParentAccount"
+                }
+            ]
+            }
+        },
+        "IamRoleForParentAccount": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+            "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": [ "ec2.amazonaws.com" ]
+                     },
+                    "Action": "sts:AssumeRole"
+                }
+                ]
+            },
+            "Path": "/",
+            "RoleName": "ParentVgwRedundancyPollerRole"
+        }
+        }
+  }
+}
