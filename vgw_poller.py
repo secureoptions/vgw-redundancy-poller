@@ -3,7 +3,7 @@ from botocore.exceptions import ClientError
 from sys import argv
 import re
 
-ec2 = boto3.client('ec2')
+ec2 = boto3.client('ec2',region_name='us-east-1')
 sts = boto3.client('sts')
 regions = ec2.describe_regions()
 
