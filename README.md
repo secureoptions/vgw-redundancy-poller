@@ -16,6 +16,10 @@ Tool which helps you quickly determine if your VGWs have physical redundancy at 
      <br>
 <li>If you have any secondary AWS accounts that you want to poll with the tool, you must first deploy the <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=SecondaryAccountVgwRedundancyPollerRole&templateURL=https://s3.amazonaws.com/secure-options/vgw-redundancy-poller/secondary_acct.json">secondary_account.json</a> template in those account(s). If you do not do this, the tool will detect "AccessDenied" against the account and skip over it</li>
 </ol>
-<br>
+
 ## Understanding the output of the tool
 When running the tool, you will see output with information about every Virtual Private Gateway (VGW) under the account(s) that have a Direct Connect VIF attached to them (or attached to the Direct Connect Gateway associated with the VGW).
+
+Here are the fields for each VGW:
+   <strong>Account:</strong>  The AWS account number that owns the VGW
+   
