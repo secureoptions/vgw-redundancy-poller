@@ -21,8 +21,13 @@ Tool which helps you quickly determine if your VGWs have physical redundancy at 
 When running the tool, you will see output with information about every Virtual Private Gateway (VGW) under the account(s) that have a Direct Connect VIF attached to them (or attached to the Direct Connect Gateway associated with the VGW).
 
 Here are the fields for each VGW:<br>
-   <strong>Account:</strong> The AWS account number that owns the VGW
-   <strong>Region:</strong> The AWS region the VGW is in
-   <strong>Datacenter Redundancy</strong> Whether the VGW has physical redundancy to more than one datacenter.
+   <strong>Account:</strong> The AWS account number that owns the VGW<br>
+   <strong>Region:</strong> The AWS region the VGW is in<br>
+   <strong>Datacenter Redundancy</strong> Whether you have physical, on-prem colo redundancy to the VGW<br>
+   <strong>AWS Endpoint Redundancy</strong> Whether the DX VIFs currently connected to the VGW reside on more than one AWS router endpoint.<br>
+   <strong>Connection Redundancy</strong> Whether the DX VIFs currently connected to the VGW reside on more than one Direct Connect link (Note: the tool does not recognize single LAGs as more than one link)<br>
+<strong>Redundancy via DX Gateway(s)</strong> Whether the above mentioned layers of redundancy may be through a Direct Connect Gateway(s) that the VGW is associated with, and not necessarily directly with the VGW itself.<br>
+<strong>Relevant DX Gateway Id(s)</strong> The Direct Connect Gateways that the redundancy comes through<br>
+<strong>VIFs</strong>The VIFs associated with the VGW itself and/or attached with the Direct Connect Gateway that the VGW is associated with.<br>
    
    
