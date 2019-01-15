@@ -20,6 +20,6 @@ Tool which helps you quickly determine if your VGWs have physical redundancy at 
 ## Understanding the output of the tool
 When running the tool, you will see output with information about every Virtual Private Gateway (VGW) under the account(s) that have a Direct Connect VIF attached to them (or attached to the Direct Connect Gateway associated with the VGW).
 
-Here are the fields for each VGW:
+Here are the fields for each VGW:<br>
    <strong>Account:</strong>  The AWS account number that owns the VGW
    
