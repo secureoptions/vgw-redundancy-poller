@@ -1,6 +1,5 @@
 import boto3
 from botocore.exceptions import ClientError
-from sys import argv
 import re
 
 ec2 = boto3.client('ec2',region_name='us-east-1')
@@ -15,7 +14,7 @@ def question():
                             "> ") or "self"
 
     user_answer = user_answer.lower()
-    permitted = re.match(r"( ?\d{4}\-?\d{4}\-?\d{4} ?\,?)*", user_answer)
+    permitted = re.match(r"( ?\d{4}\-?\d{4}\-?\d{4} ?\,?)+", user_answer)
     if permitted:
         return permitted.group(0)
     elif user_answer == 'self':
