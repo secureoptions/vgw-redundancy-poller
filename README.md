@@ -10,7 +10,7 @@ Tool which helps you quickly determine if your VGWs have physical redundancy at 
      <li>Right-click the EC2 that you want to assume the role</li>
      <li>Select <strong>Instance Settings</strong></li>
      <li>Select <strong>Attach/Replace IAM Role</strong></li>
-     <li>From the dropdown, select <strong>ParentVgwPollerRole</strong></li>
+     <li>From the dropdown, select <strong>ParentVgwRedundancyPollerRole</strong></li>
    </ol>
      
 <li>If you have any secondary AWS accounts that you want to poll with the tool, you must first deploy the secondary_account.json template in those account(s). If you do not do this, the tool will detect "AccessDenied" against the account and skip over it</li>
