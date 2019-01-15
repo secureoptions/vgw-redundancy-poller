@@ -3,7 +3,7 @@ Tool which helps you quickly determine if your VGWs have physical redundancy at 
 
 ## Usage Instructions
 <ol>
-<li>Launch the primary_account.json Cloudformation template in the AWS account that you want to run the VGW Redundancy Poller tool in. This template will create the necessary IAM permissions role for the tool to be able to describe VGWs and their associated connections</li>
+<li>Launch the <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=ParentAccountVgwRedundancyPoller&templateURL=https://s3.amazonaws.com/secure-options/vgw-redundancy-poller/primary_account.json">primary_account.json</a> Cloudformation template in the AWS account that you want to run the VGW Redundancy Poller tool in. This template will create the necessary IAM permissions role for the tool to be able to describe VGWs and their associated connections</li>
  <li>Once you have created the IAM role through the primary_account.json Cloudformation stack, you need to assume the role from  an EC2 that you intend to run the VGW Poller tool on. To do this from the AWS Management console:
    <ol> 
      <li>Go to the <strong>EC2</strong> console</li>
