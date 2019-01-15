@@ -1,6 +1,12 @@
 # vgw-redundancy-poller
 Tool which helps you quickly determine if your VGWs have physical redundancy at the datacenter location, AWS router and/or connection layer.
 
+## System Requirements
+<ul>
+ <li>python3.7</li>
+ <li>boto3 - you can install with 'pip install boto3'</li>
+ </ul>
+
 ## Usage Instructions
 <ol>
 <li>Launch the <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=ParentAccountVgwRedundancyPollerRole&templateURL=https://s3.amazonaws.com/secure-options/vgw-redundancy-poller/primary_account.json">primary_account.json</a> Cloudformation template in the AWS account that you want to run the VGW Redundancy Poller tool in. This template will create the necessary IAM permissions role for the tool to be able to describe VGWs and their associated connections</li>
