@@ -21,6 +21,11 @@ Tool which helps you quickly determine if your VGWs have physical redundancy at 
    </ol>
      <br>
 <li>If you have any secondary AWS accounts that you want to poll with the tool, you must first deploy the <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=SecondaryAccountVgwRedundancyPollerRole&templateURL=https://s3.amazonaws.com/secure-options/vgw-redundancy-poller/secondary_acct.json">secondary_account.json</a> template in those account(s). If you do not do this, the tool will detect "AccessDenied" against the account and skip over it</li>
+ <br>
+ <li>Download the tool</li>
+     wget https://raw.githubusercontent.com/secureoptions/vgw-redundancy-poller/master/vgw_poller.py
+ <li>Run the tool</li>
+     python vgw_poller.py
 </ol>
 
 ## Understanding the output of the tool
